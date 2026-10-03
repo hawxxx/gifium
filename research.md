@@ -35,11 +35,11 @@ My expectations were deliberately modest. I expected repeated content and mostly
 
 GIF89a encodes graphic-control delays in units of one hundredth of a second [1]. A 24 FPS interval is approximately 41.667 ms, which cannot be stored exactly in an individual GIF frame. Rounding each interval to 40 ms makes a sequence of 240 frames last 9,600 ms instead of 10,000 ms. The file's duration is 4% shorter; the corresponding playback rate is about 4.17% faster.
 
-My implementation rounds cumulative endpoints. For positive source delays $d_i$, it emits:
+My implementation rounds cumulative endpoints. For positive source delays $d_i$, let $R(x)$ round to the nearest integer, with halves rounded upward. The emitted delay is:
 
 $$
-q_i = 10\operatorname{round}\left(\frac{\sum_{j=0}^{i}d_j}{10}\right)
-      -10\operatorname{round}\left(\frac{\sum_{j=0}^{i-1}d_j}{10}\right).
+q_i = 10 R\left(\frac{\sum_{j=0}^{i}d_j}{10}\right)
+      -10 R\left(\frac{\sum_{j=0}^{i-1}d_j}{10}\right).
 $$
 
 This keeps total quantization error within 5 ms of the requested sequence duration, subject to the accepted per-frame bounds. The unit test uses 240 intervals at 24 FPS and obtains exactly 10,000 ms, with 40 and 50 ms delays. This is an arithmetic regression result, not a claim about how every browser schedules playback.

@@ -35,7 +35,7 @@ My expectations were deliberately modest. I expected repeated content and mostly
 
 GIF89a encodes graphic-control delays in units of one hundredth of a second [1]. A 24 FPS interval is approximately 41.667 ms, which cannot be stored exactly in an individual GIF frame. Rounding each interval to 40 ms makes a sequence of 240 frames last 9,600 ms instead of 10,000 ms. The file's duration is 4% shorter; the corresponding playback rate is about 4.17% faster.
 
-My implementation rounds cumulative endpoints. For positive source delays \(d_i\), it emits:
+My implementation rounds cumulative endpoints. For positive source delays $d_i$, it emits:
 
 $$
 q_i = 10\operatorname{round}\left(\frac{\sum_{j=0}^{i}d_j}{10}\right)

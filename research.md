@@ -37,10 +37,10 @@ GIF89a encodes graphic-control delays in units of one hundredth of a second [1].
 
 My implementation rounds cumulative endpoints. For positive source delays \(d_i\), it emits:
 
-\[
+$$
 q_i = 10\operatorname{round}\left(\frac{\sum_{j=0}^{i}d_j}{10}\right)
       -10\operatorname{round}\left(\frac{\sum_{j=0}^{i-1}d_j}{10}\right).
-\]
+$$
 
 This keeps total quantization error within 5 ms of the requested sequence duration, subject to the accepted per-frame bounds. The unit test uses 240 intervals at 24 FPS and obtains exactly 10,000 ms, with 40 and 50 ms delays. This is an arithmetic regression result, not a claim about how every browser schedules playback.
 

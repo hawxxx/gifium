@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "tarball": "gifium-0.1.0.tgz",
+  "tarballBytes": 40442,
+  "unpackedGifiumBytes": 121947,
+  "installedBackendBytes": 305482,
+  "combinedInstalledPackageFilesBytes": 427429,
+  "sha256": "43faddc71bcfe821ec8bd5f7ccdb56dd9f1108a1ffcd6b0b55c960c534b3a72d",
+  "method": "npm pack --json and a clean --omit=dev installation; sum regular file sizes inside gifium and gifsicle-wasm package directories",
+  "exclusions": "Node runtime, npm metadata outside those packages, filesystem allocation overhead and development dependencies"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "gifium",
+  "version": "0.1.0",
+  "description": "Small, timing-aware GIF optimization library and cross-platform CLI",
+  "type": "module",
+  "license": "GPL-2.0-only",
+  "author": "hawxxx",
+  "engines": { "node": ">=20" },
+  "bin": { "gifium": "dist/cli.js" },
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "src", "tsconfig.json", "README.md", "ARCHITECTURE.md", "research.md", "LICENSE", "THIRD_PARTY_NOTICES.md"],
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --test test/timing.test.mjs test/optimizer.test.mjs test/cli.test.mjs",
+    "benchmark": "npm run build && node scripts/benchmark.mjs",
+    "verify:package": "node scripts/verify-package.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": { "gifsicle-wasm": "1.96.4" },
+  "devDependencies": { "@types/node": "^22.0.0", "typescript": "~5.9.3", "omggif": "1.0.10" },
+  "repository": { "type": "git", "url": "git+https://github.com/hawxxx/gifium.git" },
+  "keywords": ["gif", "optimization", "compression", "cli", "wasm", "animation"]
+}
